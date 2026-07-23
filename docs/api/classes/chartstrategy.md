@@ -1,0 +1,443 @@
+# ChartStrategy
+
+**完整名称**: `ATAS.Strategies.Chart.ChartStrategy`
+**类型**: 类
+**继承自**: `ATAS.Indicators.Indicator`
+
+## 描述
+
+Represents an abstract class for a chart strategy that extends the functionality of an Indicator and implements the IChartStrategy and ILoggerSource interfaces.
+
+## 公共方法
+
+  - `void Start()`
+  - `void Suspend()`
+  - `void Stop()`
+  - `void StopWithNotification(string message)`
+    - Stops the strategy with a notification message.Parameters messageThe message to be displayed as a notification.
+  - `Task StartAsync()`
+    - Starts the strategy, allowing it to execute its trading logic.
+  - `Task SuspendAsync()`
+  - `Task StopAsync()`
+    - Stops the strategy, terminating its execution and releasing any resources.
+  - `async Task StopWithNotificationAsync(string message)`
+  - `async Task OpenOrderAsync(Order order)`
+    - Opens an order for the strategy asynchronously.Parameters orderThe order to be opened.
+  - `async void OpenOrder(Order order)`
+    - Opens an order for the strategy.Parameters orderThe order to be opened.
+  - `async Task ModifyOrderAsync(Order order, Order newOrder)`
+    - Modifies an existing order for the strategy asynchronously.Parameters orderThe order to be modified. newOrderThe new order with updated parameters.
+  - `async void ModifyOrder(Order order, Order newOrder)`
+    - Modifies an existing order for the strategy.Parameters orderThe order to be modified. newOrderThe new order with updated parameters.
+  - `async Task CancelOrderAsync(Order order)`
+    - Cancels an existing order for the strategy asynchronously.Parameters orderThe order to be canceled.
+  - `async void CancelOrder(Order order)`
+    - Cancels an existing order for the strategy.Parameters orderThe order to be canceled.
+  - `virtual void RefreshData()`
+    - Refreshes the data of the indicator. Override this method to update the indicator's data when necessary.
+  - `void Draw(RenderContext context, DrawingLayouts layout)`
+  - `override void Dispose()`
+  - `void ApplyDefaultColors()`
+    - Applies default colors to the drawing elements.
+  - `void SubscribeToTimer(TimeSpan period, Action callback)`
+    - Registers the callback and periodically calls it with specified period.Parameters periodA period of market data time used to repeatedly invoke the callback. callbackA method that is called each time a specified period of market data time passes.
+  - `void UnsubscribeFromTimer(TimeSpan period, Action callback)`
+    - Unregister the callback from periodic invocations.Parameters periodSubscribed period of invocations. callbackA method to be unregistered.
+  - `virtual void Dispose()`
+  - `override string ToString()`
+    - Converts the current instance of the indicator to its string representation.
+  - `virtual bool ProcessMouseClick(RenderControlMouseEventArgs e)`
+    - Processes a mouse click event on the chart object.
+  - `virtual bool ProcessMouseWheel(int delta)`
+    - Processes a mouse wheel event on the chart object.
+  - `virtual bool ProcessMouseDown(RenderControlMouseEventArgs e)`
+    - Processes a mouse down event on the chart object.
+  - `virtual bool ProcessMouseUp(RenderControlMouseEventArgs e)`
+    - Processes a mouse up event on the chart object.
+  - `virtual bool ProcessMouseMove(RenderControlMouseEventArgs e)`
+    - Processes a mouse move event on the chart object.
+  - `virtual bool ProcessMouseDoubleClick(RenderControlMouseEventArgs e)`
+    - Processes a mouse double click event on the chart object.
+  - `virtual StdCursor GetCursor(RenderControlMouseEventArgs e)`
+    - Gets the cursor to display when the mouse is over the chart object.
+  - `virtual bool ProcessKeyDown(CrossKeyEventArgs e)`
+    - Processes a key down event on the chart object.
+  - `virtual bool ProcessKeyUp(CrossKeyEventArgs e)`
+    - Processes a key up event on the chart object.
+  - `void SubscribeToTimer(TimeSpan period, Action callback)`
+    - Registers the callback and periodically calls it with specified period.
+  - `void UnsubscribeFromTimer(TimeSpan period, Action callback)`
+    - Unregister the callback from periodic invocations.
+  - `void StopWithNotification(string message)`
+    - Stops the strategy with a notification message.
+  - `void OpenOrder(Order order)`
+    - Opens an order for the strategy.
+  - `void ModifyOrder(Order order, Order newOrder)`
+    - Modifies an existing order for the strategy.
+  - `void CancelOrder(Order order)`
+    - Cancels an existing order for the strategy.
+  - `Task OpenOrderAsync(Order order)`
+    - Opens an order for the strategy asynchronously.
+  - `Task ModifyOrderAsync(Order order, Order newOrder)`
+    - Modifies an existing order for the strategy asynchronously.
+  - `Task CancelOrderAsync(Order order)`
+    - Cancels an existing order for the strategy asynchronously.
+  - `Task StartAsync()`
+    - Starts the strategy, allowing it to execute its trading logic.
+  - `Task StopAsync()`
+    - Stops the strategy, terminating its execution and releasing any resources.
+
+## 保护方法
+
+  - ` ChartStrategy(bool useCandles=false)`
+    - Protected constructor for the ChartStrategy class.
+  - `void RaiseShowNotification(string message, string title=null, LoggingLevel level=LoggingLevel.Info)`
+    - Raises a notification message with the specified message , title (optional), and logging level level . If the title is not provided, the name of the strategy is used as the title. Depending on the logging level, the message is logged using the corresponding logging method (Info, Warning, or Error). Finally, the ShowNotification event is raised to notify subscribers about the notification.
+  - `bool SetProperty< TValue >(ref TValue storage, TValue newValue, string propertyName, Action< TValue, TValue > onChanged=null)`
+    - Sets the value of a property propertyName to newValue . If the new value is different from the current value, the property is updated and a PropertyChanged event is raised. Additionally, if an onChanged action is provided, it will be invoked with the old and new values after the property has been updated. Returns true if the property was updated, false otherwise.
+  - `decimal ShrinkPrice(decimal price)`
+    - Rounds the given price price to the nearest tick size of the security and returns the result.
+  - `override void OnContainerChanged(IIndicatorContainer container)`
+  - `override void OnDataProviderChanged(IIndicatorDataProvider oldDataProvider, IIndicatorDataProvider newDataProvider)`
+  - `override void OnBestBidAskChanged(MarketDataArg depth)`
+    - Handles changes in the best bid or ask prices in the market depth represented by a MarketDataArg object.Parameters depthThe MarketDataArg representing the market depth data.
+  - `override void OnNewMyTrade(MyTrade myTrade)`
+    - Called when a new trade executed by the indicator's own strategy is received.Parameters myTradeThe new trade executed by the indicator's own strategy.
+  - `virtual void OnStarted()`
+    - Method called when the strategy is started.
+  - `virtual void OnSuspended()`
+    - Method called when the strategy is suspended.
+  - `virtual void OnStopping()`
+    - Method called when the strategy is stopping.
+  - `virtual void OnStopped()`
+    - Method called when the strategy is stopped.
+  - `virtual void OnCurrentPositionChanged()`
+    - Method called when the volume of the current position changes.
+  - `virtual bool CanProcess(int bar)`
+    - Determines if the strategy can process data for the specified bar.
+  - ` Indicator(bool useCandles=false)`
+  - ` Indicator(DataSeriesType seriesType)`
+  - `bool IsNewSession(int bar)`
+    - Function returns new session flag.
+  - `bool IsNewWeek(int bar)`
+    - Function returns new week flag.
+  - `bool IsNewMonth(int bar)`
+    - Function returns new month flag.
+  - `DrawingText AddText(string tag, string text, bool isAbovePrice, int bar, decimal price, Color textColor, Color outlineColor, Color fillColor, float fontSize, DrawingText.TextAlign align, bool autoSize=false)`
+    - Adds a drawing text element to the chart at the specified position.
+  - `DrawingText AddText(string tag, string text, bool isAbovePrice, int bar, decimal price, Color textColor, Color fillColor, float fontSize, DrawingText.TextAlign align, bool autoSize=false)`
+    - Adds a drawing text element to the chart at the specified position.
+  - `void DoActionInGuiThread(Action action)`
+    - Executes the specified action on the GUI thread.
+  - `IEnumerable< MarketDataArg > GetMarketDepthSnapshot()`
+  - `DrawingText AddText(string tag, string text, bool isAbovePrice, int bar, int price, int yOffset, int xOffset, Color textcolor, Color outlinecolor, Color fillcolor, float fontSize, DrawingText.TextAlign align, bool autoSize=false)`
+  - `override void OnApplyDefaultColors()`
+    - Invoked to apply default colors to the drawing elements.This method can be overridden in derived classes to customize or set default color values for the drawing elements. When this method is called, it is an opportunity for the derived class to apply its own default color scheme to the drawing elements used in the specific implementation.
+  - ` ExtendedIndicator(bool useCandles=false)`
+  - ` ExtendedIndicator(DataSeriesType seriesType)`
+  - `virtual void OnContainerChanged(IIndicatorContainer? container)`
+    - This method is called when the value of the Container property changes.
+  - `virtual void OnDataProviderChanged(IIndicatorDataProvider? oldDataProvider, IIndicatorDataProvider? newDataProvider)`
+    - This method is called when the value of the DataProvider property changes.
+  - `bool TryGetService< T >([NotNullWhen(true)] out T? service)`
+  - `virtual void OnPortfolioChanged(Portfolio portfolio)`
+    - This method is called when the value of the Portfolio changes.
+  - `virtual void OnPositionChanged(Position position)`
+    - This method is called when the value of the Position changes.
+  - `virtual void OnNewOrder(Order order)`
+    - This method is called when a new order is received.
+  - `virtual void OnOrderChanged(Order order)`
+    - Called when an existing order is modified (changed).
+  - `virtual void OnNewMyTrade(MyTrade myTrade)`
+    - Called when a new trade executed by the indicator's own strategy is received.
+  - `virtual void OnOrderRegisterFailed(Order order, string message)`
+    - Called when an attempt to register (place) a new order fails.
+  - `virtual void OnOrderCancelFailed(Order order, string message)`
+    - Called when an attempt to cancel an existing order fails.
+  - `virtual void OnOrderModifyFailed(Order order, Order newOrder, string error)`
+    - Called when an attempt to modify an existing order fails.
+  - `virtual void OnRender(RenderContext context, DrawingLayouts layout)`
+    - Override this method for implementing your own data rendering logic.
+  - `void SubscribeToDrawingEvents(DrawingLayouts flags)`
+    - Method for specifying the list of layouts in which rendering will be performed.
+  - `void RedrawChart(RedrawArg? redrawArg=null)`
+    - Call to redraw chart.
+  - `void AddAlert(string soundFile, string instrument, string message, CrossColor background, CrossColor foreground)`
+    - Adds an alert for a specific instrument with custom properties.
+  - `void AddAlert(string soundFile, string instrument, string message, CrossColor background, CrossColor foreground, DateTime time)`
+    - Adds an alert for a specific instrument with custom properties.
+  - `void AddAlert(string soundFile, string message)`
+    - Adds an alert with the specified sound file and message to the chart.
+  - `DrawingText AddText(string tag, string text, bool isAbovePrice, int bar, decimal price, int yOffset, int xOffset, Color textColor, Color outlineColor, Color fillColor, float fontSize, DrawingText.TextAlign align, bool autoSize=false)`
+    - Adds a drawing text element to the chart at the specified position.
+  - `override void RecalculateValues()`
+    - Recalculate the indicator values on each bar.
+  - `IndicatorCandle GetCandle(int bar)`
+    - Gets the IndicatorCandle object at the specified bar index.
+  - `override void Calculate(int bar, decimal value)`
+    - Performs the calculation for the indicator at the specified bar and value.Parameters barThe bar number for which the calculation is performed. valueThe input value from the data series at the specified bar.
+  - `virtual void OnNewTrades(IEnumerable< MarketDataArg > trades)`
+    - Handles a collection of new trade data represented by MarketDataArg objects.
+  - `virtual void OnNewTrade(MarketDataArg trade)`
+    - Handles an individual trade represented by a MarketDataArg object.
+  - `virtual void OnBestBidAskChanged(MarketDataArg depth)`
+    - Handles changes in the best bid or ask prices in the market depth represented by a MarketDataArg object.
+  - `virtual void MarketDepthsChanged(IEnumerable< MarketDataArg > depths)`
+    - Handles changes in multiple market depths represented by an IEnumerable<MarketDataArg>.
+  - `virtual void MarketDepthChanged(MarketDataArg depth)`
+    - Handles changes in a single market depth represented by a MarketDataArg object.
+  - `virtual void OnCumulativeTrade(CumulativeTrade trade)`
+    - Handles a cumulative trade event represented by a CumulativeTrade object.
+  - `virtual void OnUpdateCumulativeTrade(CumulativeTrade trade)`
+    - Handles an update event for a cumulative trade represented by a CumulativeTrade object.
+  - `virtual void OnCumulativeTradesResponse(CumulativeTradesRequest request, IEnumerable< CumulativeTrade > cumulativeTrades)`
+    - Called when a response for a cumulative trades request is received.
+  - `void RequestForCumulativeTrades(CumulativeTradesRequest request)`
+    - Sends a request for cumulative trades data to the online data provider.
+  - `override void OnVisibleChanged()`
+    - Called when the Visible property changes.
+  - `virtual void OnFixedProfilesResponse(IndicatorCandle fixedProfile, FixedProfilePeriods period)`
+  - `virtual void OnFixedProfilesResponse(IndicatorCandle fixedProfileScaled, IndicatorCandle fixedProfileOriginScale, FixedProfilePeriods period)`
+    - This method is called when the online data provider responds with fixed profile data. Override this method in derived classes to handle the received fixed profile data.
+  - `void GetFixedProfile(FixedProfileRequest request)`
+    - Requests fixed profile data from the online data provider.
+  - `async Task< FixedProfileResponse?> RequestFixedProfileAsync(FixedProfileRequest request)`
+    - Asynchronously requests a fixed market profile parameterized with FixedProfileRequest.
+  - `Task SubscribeMarketByOrderData()`
+    - Subscribes to the market by order data.
+  - `ITradesCache GetTradesCache(TimeSpan period)`
+    - Returns a trades cache.
+  - `IMarketByOrdersCache GetMarketByOrdersCache(TimeSpan period)`
+    - Returns a market by order data cache.
+  - `IMarketByOrdersWithTradesCache GetMarketByOrdersWithTradesCache(TimeSpan period)`
+    - Returns a market by order data and trades cache.
+  - `virtual void OnMarketByOrdersChanged(IEnumerable< MarketByOrder > values)`
+    - Handles a collection of market by order data represented by MarketByOrder objects.
+  - `virtual void OnApplyDefaultColors()`
+    - Invoked to apply default colors to the drawing elements.
+  - ` BaseIndicator(bool useCandles=false)`
+  - `virtual void RecalculateValues()`
+    - Recalculate the indicator values on each bar.
+  - `virtual void OnInitialize()`
+    - The method is executed before the first calculation.
+  - `virtual void OnRecalculate()`
+    - The method is executed before a new calculation.
+  - `virtual void OnFinishRecalculate()`
+    - The method is executed after the end of the calculation.
+  - `virtual void Calculate(int bar, decimal value)`
+    - Performs the calculation for the indicator at the specified bar and value.
+  - `abstract void OnCalculate(int bar, decimal value)`
+    - The main indicator calculation method is called for each bar on the history, then it is called on each tick.
+  - `void Add(Indicator indicator)`
+    - Adds an indicator to the list of used indicators by this indicator.
+  - `void Clear()`
+    - Clear all data series.
+  - `virtual void OnSourceChanged()`
+    - This method is called when the SourceDataSeries property is changed.
+  - `virtual void OnPropertiesEditorChanged(IPropertiesEditor? oldValue, IPropertiesEditor? newValue)`
+    - Called when the PropertiesEditor property changes.
+  - `void RaisePropertyChanged(string propertyName)`
+    - Raises the PropertyChanged event for the specified property name.
+  - `void RaisePropertyChanged(object? sender, PropertyChangedEventArgs e)`
+    - Raises the PropertyChanged event with the specified event arguments.
+  - `void RaisePanelPropertyChanged(string name)`
+    - Raises the PanelPropertyChanged event with the specified property name.
+  - `void RaiseBarValueChanged(int bar)`
+    - Raises the BarValueChanged event with the specified bar value.
+  - `virtual void OnDispose()`
+    - Called when the indicator is being disposed.
+  - `override void OnVisibleChanged()`
+    - Called when the Visible property changes.
+  - `virtual void OnVisibleChanged()`
+    - Called when the Visible property changes.
+  - `virtual void LockedOnChanged()`
+    - Called when the Locked property changes.
+  - `void SetProperty< TProperty >(ref TProperty store, TProperty value, Action? onChanged=null, Func< TProperty, bool >? onChanging=null, [CallerMemberName] string propertyName="")`
+    - Sets the value of a property and notifies subscribers if the value has changed.
+  - `void SetTrackedProperty< TProperty >(ref TProperty store, TProperty value, Action< string >? onChanged=null, [CallerMemberName] string propertyName="")`
+    - Sets the value of a property that implements the INotifyPropertyChanged interface and notifies subscribers if the value has changed.
+  - `virtual void OnChangeProperty([CallerMemberName] string propertyName="")`
+    - Notifies subscribers when a property value changes.
+
+## 属性
+
+  - `IEnumerable< Order > Orders { get; }`
+    - Gets the collection of orders associated with this strategy.
+  - `IEnumerable< MyTrade > MyTrades { get; }`
+    - Gets the collection of trades associated with this strategy.
+  - `StrategyStates State { set; }`
+    - Gets the current state of the strategy.
+  - `bool IsActivated { get; }`
+  - `decimal CurrentPosition { get; }`
+    - Gets the current position volume of the strategy.
+  - `decimal AveragePrice { get; }`
+    - Gets the average price of the strategy's trades.
+  - `decimal OpenPnL { get; }`
+    - Gets the open profit and loss of the strategy.
+  - `decimal ClosedPnL { get; }`
+    - Gets the closed profit and loss of the strategy.
+  - `Security Security { set; }`
+  - `Portfolio Portfolio { set; }`
+  - `TPlusLimits? TPlusLimit { set; }`
+  - `MarketDataArg BestBid { get; }`
+    - Gets the best bid market data associated with this chart strategy.
+  - `MarketDataArg BestAsk { get; }`
+    - Gets the best ask market data associated with this chart strategy.
+  - `IDataFeedConnector Connector { set; }`
+    - Gets or sets the data feed connector for the strategy.
+  - `Guid LoggerId { set; }`
+  - `string LoggerName { set; }`
+  - `LoggingLevel LoggingLevel { set; }`
+  - `ILoggerSource ParentLoggerSource { set; }`
+  - `ICachedCollection< ILoggerSource > ChildLoggerSources { get; }`
+  - `string? Category { get; }`
+  - `IInstrumentInfo? InstrumentInfo { get; }`
+    - Gets the instrument information associated with the data provider.
+  - `ITradingManager? TradingManager { get; }`
+    - Gets the trading manager associated with the data provider.
+  - `IPlatformSettings? PlatformSettings { get; }`
+    - Gets the platform settings associated with the data provider.
+  - `IMarketDepthInfoProvider? MarketDepthInfo { get; }`
+    - Gets the market depth information provider associated with the data provider.
+  - `IChart? ChartInfo { get; }`
+    - Gets the chart information associated with the data provider.
+  - `ITradingStatisticsProvider? TradingStatisticsProvider { get; }`
+    - Gets the trading statistics provider associated with the data provider.
+  - `bool IgnoreHistoryScale { set; }`
+  - `Rectangle ChartArea { get; }`
+    - Gets the rectangle representing the chart area on the screen.
+  - `IMouseLocationInfo MouseLocationInfo { get; }`
+    - Gets the information about the mouse location on the chart.
+  - `int FirstVisibleBarNumber { get; }`
+    - Gets the bar number of the first visible bar on the chart.
+  - `int LastVisibleBarNumber { get; }`
+    - Gets the bar number of the last visible bar on the chart.
+  - `int VisibleBarsCount { get; }`
+    - Gets the number of visible bars on the chart.
+  - `decimal CumulativeDomAsks { get; }`
+  - `decimal CumulativeDomBids { get; }`
+  - `string? Instrument { get; }`
+    - Instrument name.
+  - `decimal TickSize { get; }`
+    - TickSize.
+  - `string DataPath { get; }`
+    - Path to the working program folder.
+  - `int ValueAreaPercent { get; }`
+  - `string? ChartType { get; }`
+    - Chart type.
+  - `string? TimeFrame { get; }`
+    - Timeframe.
+  - `string StringFormat { get; }`
+    - Price format.
+  - `virtual bool AlertsEnabled { set; }`
+  - `bool FullScreenMode { set; }`
+    - Gets or sets full screen mode for the indicator. Could be applied only to the vertical indicators('IsVerticalIndicator = true')
+  - `bool DenyToChangePanel { set; }`
+    - Gets or sets a value indicating whether changing the indicator's panel is denied. For vertical indicators, it is always denied.
+  - `bool DrawAbovePrice { set; }`
+    - Gets or sets a value indicating whether custom painting should be performed on top of rendered bars.
+  - `bool EnableCustomDrawing { set; }`
+    - Gets or sets a value indicating whether custom drawing is enabled for the indicator.
+  - `bool ShowDescription { set; }`
+    - Gets or sets a value indicating whether the description of the indicator should be shown.
+  - `IIndicatorContainer? Container { set; }`
+    - Gets or sets the container in which the indicator is hosted.
+  - `IIndicatorDataProvider? DataProvider { set; }`
+    - Gets or sets the data provider for the indicator.
+  - `List< LineTillTouch > HorizontalLinesTillTouch { get; }`
+    - Gets the collection of horizontal lines used to track touch points on the chart.
+  - `List< TrendLine > TrendLines { get; }`
+    - Gets the collection of trend lines on the chart.
+  - `List< DrawingRectangle > Rectangles { get; }`
+    - Gets the collection of rectangles on the chart.
+  - `SyncDictionary< string, DrawingText > Labels { set; }`
+    - Gets or sets the collection of named drawing text elements.
+  - `IEnumerable< MarketByOrder > MarketByOrders { get; }`
+    - Gets a snapshot of the current market by order data.
+  - `DateTime MarketTime { get; }`
+    - Current market time.
+  - `DateTime UtcTime { get; }`
+    - Current UTC time.
+  - `static ? PerformanceDiagnoser PerformanceDiagnoser { get; }`
+    - Indicator performance tracker.
+  - `static bool UseProfiling { set; }`
+    - Set to true to measure the performance of all indicators.
+  - `IPropertiesEditor? PropertiesEditor { set; }`
+  - `string Name { set; }`
+    - Name of the indicator.
+  - `bool IsDisposed { set; }`
+    - Gets or sets a value indicating whether the indicator object has been disposed of.
+  - `List< IDataSeries > DataSeries { get; }`
+    - List of data series used by the indicator.
+  - `bool SupportsExtendedSeries { get; }`
+    - Gets value indicating whether the data series can be drawn out of chart bars.
+  - `List< LineSeries > LineSeries { get; }`
+    - List of line series used by the indicator.
+  - `string Panel { set; }`
+    - The name of the panel where the indicator is placed.
+  - `bool IsVerticalIndicator { set; }`
+    - Gets or sets a value indicating whether the indicator is intended to be displayed as a vertical indicator.
+  - `bool UseCandles { get; }`
+    - Gets a value indicating whether the indicator uses candle data series.
+  - `int CurrentBar { get; }`
+    - Bars number. All bars and the values of the corresponding data series have a serial number. The earliest bar of the chart is assigned the number 0; the next bar is assigned the number 1, and so on.
+  - `IDataSeries< decimal >? SourceDataSeries { set; }`
+    - Gets or sets the data series used as the source for the indicator's calculations.
+  - `decimal this[int index] { set; }`
+    - Gets or sets the value of the first data series of the indicator at the specified index.
+  - `bool Visible { set; }`
+    - Gets or sets a value indicating whether the chart object is visible.
+  - `bool Locked { set; }`
+    - Gets or sets a value indicating whether the chart object is locked.
+  - `bool AllowedInteraction { get; }`
+    - Gets a value indicating whether interaction with the chart object is allowed.
+  - `IPropertiesEditor? PropertiesEditor { set; }`
+  - `DateTime MarketTime { get; }`
+    - Current market time.
+  - `DateTime UtcTime { get; }`
+    - Current UTC time.
+  - `IEnumerable< Order > Orders { get; }`
+    - Gets the collection of orders associated with this strategy.
+  - `IEnumerable< MyTrade > MyTrades { get; }`
+    - Gets the collection of trades associated with this strategy.
+  - `string Name { set; }`
+    - Gets or sets the name of the strategy.
+  - `StrategyStates State { get; }`
+    - Gets the current state of the strategy.
+  - `decimal CurrentPosition { get; }`
+    - Gets the current position volume of the strategy.
+  - `decimal AveragePrice { get; }`
+    - Gets the average price of the strategy's trades.
+  - `decimal OpenPnL { get; }`
+    - Gets the open profit and loss of the strategy.
+  - `decimal ClosedPnL { get; }`
+    - Gets the closed profit and loss of the strategy.
+  - `Security Security { set; }`
+    - Gets or sets the security associated with the strategy.
+  - `Portfolio Portfolio { set; }`
+    - Gets or sets the portfolio associated with the strategy.
+  - `TPlusLimits? TPlusLimit { set; }`
+    - Gets or sets the T+ limits for the strategy.
+  - `IDataFeedConnector Connector { set; }`
+    - Gets or sets the data feed connector for the strategy.
+
+## 事件
+
+  - `event EventHandler< StrategyStateChangedEventArgs > StateChanged`
+  - `event EventHandler< StrategyNotificationEventArgs > ShowNotification`
+  - `event Action LoggerSettingsChanged`
+  - `event new? PropertyChangedEventHandler PropertyChanged`
+  - `event PropertyChangedEventHandler? PanelPropertyChanged`
+  - `event Action< int >? BarValueChanged`
+    - Event that is raised when the value of a bar in the indicator changes.
+  - `event PropertyChangedEventHandler? PropertyChanged`
+  - `event PropertyChangedEventHandler PanelPropertyChanged`
+    - Occurs when a panel property value changes.
+  - `event EventHandler< StrategyStateChangedEventArgs > StateChanged`
+    - Occurs when the state of the strategy changes.
+  - `event EventHandler< StrategyNotificationEventArgs > ShowNotification`
+    - Occurs when the strategy needs to show a notification or alert.
+  - `event static PerfCounter MeasurePerformance`
+    - Measures the performance of a specific operation with the given name. If a performance diagnoser is available, it will be used to measure the performance; otherwise, a default performance counter will be returned.
+  - `event readonly List< Indicator > UsedIndicators`
+    - The list of indicators that are being used by this indicator.

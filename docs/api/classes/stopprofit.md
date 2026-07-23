@@ -1,0 +1,169 @@
+# StopProfit
+
+**完整名称**: `ATAS.Strategies.ATM.StopProfit`
+**类型**: 类
+**继承自**: `ATAS.Strategies.ATM.BaseStopProfitStrategy< StopProfit, SimpleStopProfitSettings >`
+
+## 公共方法
+
+  - ` StopProfit()`
+  - `bool CanSetCustomStop()`
+  - `bool CanSetCustomTake()`
+  - `async Task SetCustomStopOrTake(PriceUnit? stop, PriceUnit? take)`
+  - `IStopProfitSettings GetSettingsWithStopOrTake(PriceUnit? stop, PriceUnit? take)`
+  - `void SetSettings(TSettings settings)`
+  - `new TSettings GetSettings()`
+  - `bool IEnumerable< string > Errors IsValidSettings(TSettings settings, decimal? expectedPositionVolume=null, decimal? expectedPositionPrice=null)`
+  - `void SetSettings(TSettings settings)`
+  - `new TSettings GetSettings()`
+  - `bool IEnumerable< string > Errors IsValidSettings(TSettings settings, decimal? expectedPositionVolume=null, decimal? expectedPositionPrice=null)`
+  - `bool CanSetCustomStop()`
+  - `bool CanSetCustomTake()`
+  - `Task SetCustomStopOrTake(PriceUnit? stop, PriceUnit? take)`
+  - `IStopProfitSettings GetSettingsWithStopOrTake(PriceUnit? stop, PriceUnit? take)`
+  - `Task WatchAsync()`
+  - `Task StartFromWatchAsync()`
+  - `Task RetryAsync()`
+  - `Task CancelAsync()`
+  - `Task ResetOrdersAsync()`
+  - `bool IsStopLoss(Order order)`
+  - `bool IsTakeProfit(Order order)`
+  - `Task OpenOrderAsync(Order order, bool isAutomated=true)`
+  - `Task ModifyOrderAsync(Order order, Order newOrder, bool isAutomated=true)`
+  - `Task CancelOrderAsync(Order order, bool isAutomated=true)`
+  - `Task CancelOrdersAsync(IEnumerable< Order > orders)`
+  - `IATMStrategy Clone(bool cloneOrders=true)`
+  - `void SetSettings(IStopProfitSettings settings)`
+  - `IStopProfitSettings GetSettings()`
+  - `bool IEnumerable< string > Errors IsValidSettings(IStopProfitSettings settings, decimal? expectedPositionVolume=null, decimal? expectedPositionPrice=null)`
+  - `Task StartAsync()`
+    - Starts the strategy, allowing it to execute its trading logic.
+  - `Task StopAsync()`
+    - Stops the strategy, terminating its execution and releasing any resources.
+
+## 保护方法
+
+  - `override StopProfit CreateNew()`
+  - `override void CommitChanges(StopProfit model, bool cloneOrders)`
+  - `override SimpleStopProfitSettings OnGetSettings()`
+  - `override void OnSetSettings(SimpleStopProfitSettings settings)`
+  - `override ICollection< string > OnIsValidSettings(SimpleStopProfitSettings settings, decimal positionVolume, decimal positionPrice, decimal currentPrice)`
+  - `override void OnResetStopTakeOrderId()`
+  - `override void OnResetCustomStopAndTakePrices()`
+  - `override void DisableStopAndTake()`
+  - `override void OnAttachStopAndTakeOrdersFailed()`
+  - `override void OnProcessOrder(Order order)`
+  - `override async Task OnCancelAll(bool retryOnError)`
+  - `override async Task< bool > OnCancelSecondOrder(Order order)`
+  - `override bool SetStopOrTakeCancelledManually(Order order, string type)`
+  - `override bool SetStopOrTakeCustomPrice(Order currentStopOrTake, Order newOrder)`
+  - `override bool IsStopOrder(Order order)`
+  - `override bool IsTakeOrder(Order order)`
+  - `override async Task OnProcess(ChangesInfo info)`
+  - `override void OnCurrentPositionChanged()`
+  - `override void OnPnLChanged(int ticks)`
+  - `async Task ProcessAfterDelay(TimeSpan? delay=null)`
+  - `void Process(bool isPositionChanged=false, bool isOrdersChanged=false, bool isSettingsChanged=false)`
+  - `decimal GetPriceValue(decimal price, PriceUnit value, decimal sign)`
+  - `bool IsEquals(Order first, Order second, bool isStop, bool comparePrices)`
+  - `Order TryAttachOrder(string type, Order order, StrategyOrderId orderId, string prefix)`
+  - `Order CreateStopOrder(OrderDirections direction, decimal sl, decimal volume, string prefix)`
+  - `Order CreateTakeOrder(OrderDirections direction, decimal tp, decimal volume, string prefix)`
+  - `async Task< bool > TryCancelStopOrTake(string type, Order order, string message, string prefix, bool retryOnError)`
+  - `async Task< Order > TryProcessStopOrTake(string type, Order oldOrder, OrderDirections direction, PriceUnit? currentValue, int positionSign, decimal volume, string prefix, bool isPositionChanged)`
+  - `async Task< bool > TryCancelSecondOrder(string type, Order order, string prefix)`
+  - `void ResetCustomStopAndTakePrices()`
+  - `void ResetWatchState()`
+  - `virtual void OnProcessOrder(Order order)`
+  - `abstract Task OnCancelAll(bool retryOnError)`
+  - `abstract Task< bool > OnCancelSecondOrder(Order order)`
+  - `abstract Task OnProcess(ChangesInfo info)`
+  - `abstract void OnResetCustomStopAndTakePrices()`
+  - `abstract void OnResetStopTakeOrderId()`
+  - `abstract void DisableStopAndTake()`
+  - `abstract void OnAttachStopAndTakeOrdersFailed()`
+  - `abstract bool SetStopOrTakeCustomPrice(Order currentStopOrTake, Order newOrder)`
+  - `abstract bool SetStopOrTakeCancelledManually(Order order, string type)`
+  - `abstract void OnSetSettings(TSettings settings)`
+  - `abstract TSettings OnGetSettings()`
+  - `abstract ICollection< string > OnIsValidSettings(TSettings settings, decimal positionVolume, decimal positionPrice, decimal currentPrice)`
+  - `override async Task OnStarted()`
+    - Called when the strategy is started from StrategyStates.Stopped state.
+  - `override async Task OnStartedFromWatch()`
+    - Called when the strategy is started from StrategyStates.Watch state.
+  - `override async Task OnStopping()`
+    - Called when the strategy is stopping.
+  - `override Task OnRetry()`
+  - `override async Task OnCancel()`
+  - `override Task OnResetOrders()`
+  - `override void OnCurrentPositionChanged()`
+    - Called when the volume of the current position changes.
+  - `override async Task OnModifyOrder(Order order, Order newOrder, bool isAutomated)`
+    - Called when an existing order is modified.
+  - `override async Task OnCancelOrder(Order order, bool isAutomated)`
+    - Called when an order is canceled.
+  - `override async Task OnCancelOrdersAsync(IEnumerable< Order > orders)`
+  - `override void OnNewOrder(Order order)`
+    - Called when a new order is added.
+  - `override void OnOrderChanged(Order order)`
+    - Called when an existing order is changed.
+  - `override void OnSetStopProfitSettings(IStopProfitSettings settings)`
+  - `override IStopProfitSettings OnGetStopProfitSettings()`
+  - ` override(bool IsValid, IEnumerable< string > Errors)`
+
+## 属性
+
+  - `override bool IsStopOrderAttached { get; }`
+  - `override bool IsTakeOrderAttached { get; }`
+  - `override bool HasActiveOrders { get; }`
+  - `StopProfitSettings TakeProfit { get; }`
+  - `StopProfitSettings StopLoss { get; }`
+  - `PriceUnit? CurrentStop { get; }`
+  - `PriceUnit? CurrentTake { get; }`
+  - `StrategyOrderId? StopOrderId { get; }`
+  - `StrategyOrderId? TakeOrderId { get; }`
+  - `BreakevenSettings Breakeven { set; }`
+  - `TrailingStopSettings TrailingStop { set; }`
+  - `abstract bool IsStopOrderAttached { get; }`
+  - `abstract bool IsTakeOrderAttached { get; }`
+  - `TimeSpan ProcessTimeout { set; }`
+  - `TimeSpan AttachOrdersPeriod { get; }`
+  - `TimeSpan RetryPeriodOnConnectionError { get; }`
+  - `TimeSpan RetryPeriodOnOrderError { get; }`
+  - `TimeSpan RetryPeriod { get; }`
+  - `StopProfitSettings StopLoss { get; }`
+  - `StopProfitSettings TakeProfit { get; }`
+  - `TrailingStopSettings TrailingStop { get; }`
+  - `BreakevenSettings Breakeven { get; }`
+  - `PriceUnit? CurrentStop { get; }`
+  - `PriceUnit? CurrentTake { get; }`
+  - `bool HasActiveOrders { get; }`
+  - `IStrategyMarketDataProvider MarketDataProvider { set; }`
+  - `string Name { set; }`
+    - Gets or sets the name of the strategy.
+  - `StrategyStates State { get; }`
+    - Gets the current state of the strategy.
+  - `decimal CurrentPosition { get; }`
+    - Gets the current position volume of the strategy.
+  - `decimal AveragePrice { get; }`
+    - Gets the average price of the strategy's trades.
+  - `decimal OpenPnL { get; }`
+    - Gets the open profit and loss of the strategy.
+  - `decimal ClosedPnL { get; }`
+    - Gets the closed profit and loss of the strategy.
+  - `Security Security { set; }`
+    - Gets or sets the security associated with the strategy.
+  - `Portfolio Portfolio { set; }`
+    - Gets or sets the portfolio associated with the strategy.
+  - `TPlusLimits? TPlusLimit { set; }`
+    - Gets or sets the T+ limits for the strategy.
+  - `IDataFeedConnector Connector { set; }`
+    - Gets or sets the data feed connector for the strategy.
+  - `bool IsValid `
+  - `bool IsValid `
+  - `bool IsValid `
+  - `EventHandler< EventArgs > SettingsChanged `
+  - `EventHandler< StrategyStateChangedEventArgs > StateChanged `
+    - Occurs when the state of the strategy changes.
+  - `EventHandler< StrategyNotificationEventArgs > ShowNotification `
+    - Occurs when the strategy needs to show a notification or alert.

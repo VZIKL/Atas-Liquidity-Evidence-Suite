@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <!-- Allows validation builds on Linux/macOS; ATAS itself still runs on Windows. -->
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <AtasInstallDir Condition="'$(AtasInstallDir)' == ''">C:\Program Files\ATAS</AtasInstallDir>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>ATAS.CustomIndicators</AssemblyName>
+    <RootNamespace>ATAS.CustomIndicators</RootNamespace>
+    <Version>1.0.0</Version>
+    <Description>Iceberg order detection, stop-loss cascade detection, and liquidity stress indicators for ATAS platform</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- ATAS platform DLLs - adjust paths to match your ATAS installation -->
+    <Reference Include="ATAS.Indicators">
+      <HintPath>$(AtasInstallDir)\ATAS.Indicators.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Utils.Common">
+      <HintPath>$(AtasInstallDir)\Utils.Common.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,268 @@
+# BasketConnector
+
+**完整名称**: `ATAS.DataFeedsCore.BasketConnector`
+**类型**: 类
+**继承自**: `ATAS.DataFeedsCore.IDataFeedConnector`
+
+## 公共方法
+
+  - ` BasketConnector(IDataFeedConnector dataFeedConnector, IDataFeedConnector tradingConnector, bool marketDataOnly=false)`
+  - `void Connect()`
+  - `void Disconnect()`
+  - `async Task ConnectAsync()`
+  - `async Task DisconnectAsync()`
+  - `void SubscribeToMarketData(IEnumerable< Security > securities, SubscriptionType subscriptionTypes)`
+  - `void SubscribeToMarketData(Security security, SubscriptionType subscriptionTypes)`
+    - Subscribes to market data for a security.
+  - `void UnsubscribeFromMarketData(IEnumerable< Security > securities, SubscriptionType subscriptionTypes)`
+  - `void UnsubscribeFromMarketData(Security security, SubscriptionType subscriptionTypes)`
+    - Unsubscribes from market data for a security.
+  - `void SearchSecurities(SecurityFilter filter)`
+    - Searches for securities matching the specified filter.
+  - `async Task< IEnumerable< Security > > SearchSecuritiesAsync(SecurityFilter filter)`
+  - `async Task< IEnumerable< MyTrade > > RecoverTradesAsync(Security security, DateTime from, DateTime to)`
+  - `void SetSupportedExchanges(IEnumerable< string > exchanges)`
+  - `void RegisterOrder(Order order)`
+  - `void ModifyOrder(Order order, Order neworder)`
+    - Modifies the price of an order.
+  - `void CancelOrder(Order order)`
+  - `Task RegisterOrderAsync(Order order)`
+  - `Task ModifyOrderAsync(Order order, Order newOrder)`
+  - `Task CancelOrderAsync(Order order)`
+  - `Order TryGetOrder(long extId)`
+  - `IEnumerable< string > GetRoutes(Security security)`
+  - `IEnumerable< Portfolio > GetPortfolios(Security security)`
+  - `Position GetPosition(Portfolio portfolio, Security security, TPlusLimits? tPlusLimit)`
+  - `Task ClosePositionAsync(Position position)`
+  - `Task ClosePositionsAsync(Portfolio portfolio)`
+  - `Task ChangeMarginParametersAsync(Position position, bool? isolated=null, decimal? leverage=null)`
+    - Switches position margin mode (isolated/cross) and/or trading leverage for it.
+  - `Task ChangeIsolatedMarginAsync(Position position, decimal value)`
+    - Adds or removes to isolated margin of a position. This method does not apply for crossed margin mode This method works only if Position.Risk property is not null.
+  - `decimal? CalcLiquidationPrice(Position position, decimal margin)`
+    - Allows to estimate Liquidation Price change for a margin.
+  - `decimal?? decimal maxRemovable CalcIsolatedMarginChangeRange(Position position)`
+  - `decimal ConvertCurrency(Security security, string currencyFrom, string currencyTo, decimal volume, decimal? limitPrice=null, bool roundToLotSize=true)`
+    - Converts volume from one currency to another Used for Notional value calculation.
+  - `decimal? CalcMaxOrderVolume(OrderTypes orderType, Security security, Portfolio portfolio, OrderDirections direction, decimal? limitPrice=null)`
+    - Gets max possible volume for the order This function is always return null if IsSupportedMaxOrderCalculation is false.
+  - `decimal? CalcOrderCost(OrderTypes orderType, Security security, Portfolio portfolio, OrderDirections direction, decimal? limitPrice, decimal volume, out object? detailing, bool giveDetailing=false)`
+    - Calculates total order cost including commissions and initial margin and everything else This function is always return null if IsSupportedMaxOrderCalculation is false.
+  - `ISecurityTradingOptions? GetSecurityTradingOptions(Security security)`
+    - Gets possible TimeInForce for order and optional flags that may be passed when order is created If null default behaviour is expected: TimeInForce = DAY, GTC, FOK No order flags
+  - `Task< IEnumerable< MyTrade > > GetMyTradesAsync(Portfolio portfolio, Security security, DateTime from, DateTime to)`
+    - Get a list of my trades.
+  - `void Connect()`
+  - `void Disconnect()`
+  - `Task ConnectAsync()`
+  - `Task DisconnectAsync()`
+  - `Task RegisterOrderAsync(Order order)`
+  - `Task ModifyOrderAsync(Order order, Order newOrder)`
+  - `Task CancelOrderAsync(Order order)`
+  - `void CancelOrder(Order order)`
+  - `void RegisterOrder(Order order)`
+  - `void ModifyOrder(Order order, Order neworder)`
+    - Modifies the price of an order.
+  - `Order TryGetOrder(long extId)`
+  - `Position GetPosition(Portfolio portfolio, Security security, TPlusLimits? tPlusLimit)`
+  - `Task ClosePositionAsync(Position position)`
+  - `Task ClosePositionsAsync(Portfolio portfolio)`
+  - `void SubscribeToMarketData(IEnumerable< Security > securities, SubscriptionType subscriptionTypes)`
+  - `void SubscribeToMarketData(Security security, SubscriptionType subscriptionTypes)`
+    - Subscribes to market data for a security.
+  - `void UnsubscribeFromMarketData(IEnumerable< Security > securities, SubscriptionType subscriptionTypes)`
+  - `void UnsubscribeFromMarketData(Security security, SubscriptionType subscriptionTypes)`
+    - Unsubscribes from market data for a security.
+  - `void SearchSecurities(SecurityFilter filter)`
+    - Searches for securities matching the specified filter.
+  - `Task< IEnumerable< Security > > SearchSecuritiesAsync(SecurityFilter filter)`
+  - `IEnumerable< string > GetRoutes(Security security)`
+  - `IEnumerable< Portfolio > GetPortfolios(Security security)`
+  - `Task ChangeMarginParametersAsync(Position position, bool? isolated=null, decimal? leverage=null)`
+    - Switches position margin mode (isolated/cross) and/or trading leverage for it.
+  - `Task ChangeIsolatedMarginAsync(Position position, decimal value)`
+    - Adds or removes to isolated margin of a position. This method does not apply for crossed margin mode This method works only if Position.Risk property is not null.
+  - `decimal? CalcLiquidationPrice(Position position, decimal margin)`
+    - Allows to estimate Liquidation Price change for a margin.
+  - `decimal?? decimal maxRemovable CalcIsolatedMarginChangeRange(Position position)`
+  - `decimal ConvertCurrency(Security security, string currencyFrom, string currencyTo, decimal volume, decimal? limitPrice=null, bool roundToLotSize=true)`
+    - Converts volume from one currency to another Used for Notional value calculation.
+  - `decimal? CalcMaxOrderVolume(OrderTypes orderType, Security security, Portfolio portfolio, OrderDirections direction, decimal? limitPrice=null)`
+    - Gets max possible volume for the order This function is always return null if IsSupportedMaxOrderCalculation is false.
+  - `decimal? CalcOrderCost(OrderTypes orderType, Security security, Portfolio portfolio, OrderDirections direction, decimal? limitPrice, decimal volume, out object? detailing, bool giveDetailing=false)`
+    - Calculates total order cost including commissions and initial margin and everything else This function is always return null if IsSupportedMaxOrderCalculation is false.
+  - `ISecurityTradingOptions? GetSecurityTradingOptions(Security security)`
+    - Gets possible TimeInForce for order and optional flags that may be passed when order is created If null default behaviour is expected: TimeInForce = DAY, GTC, FOK No order flags
+  - `Task< IEnumerable< MyTrade > > GetMyTradesAsync(Portfolio portfolio, Security security, DateTime from, DateTime to)`
+    - Get a list of my trades.
+  - `decimal? maxAddable()`
+  - `decimal? maxAddable()`
+    - Calculates possible changes of the isolated margin of a position (only for leveraged trading)
+
+## 属性
+
+  - `IDataFeedConnector DataFeedConnector { get; }`
+  - `IDataFeedConnector TradingConnector { get; }`
+  - `bool MarketDataOnly { get; }`
+  - `Guid Id { get; }`
+  - `MarketDataDelayPeriods MarketDataDelayPeriod { set; }`
+    - Gets or sets delay period for market data.
+  - `IEntityFactory Factory { set; }`
+    - Factory used to create Security, Portfolio, and other entity objects.
+  - `ITimeSyncManager? DefaultTimeSyncManager { set; }`
+    - Default ITimeSyncManager to get time difference with NTP server.
+  - `IConnectorExchangeInfoProvider ExchangeInfoProvider { set; }`
+    - Gets or sets the provider used to retrieve exchange information for the securities.
+  - `string DataPath { set; }`
+  - `bool MarketDataStreamEnabled { set; }`
+    - Indicates whether to raise market data through BestBidAskUpdates, MarketDepthsUpdate, and NewTrades events.
+  - `bool AllowUpdatePositionsPnL { set; }`
+  - `bool ServerMode { set; }`
+  - `bool ReconnectOnFirstConnect { set; }`
+  - `TimeOnly? RefreshSecuritiesTime { set; }`
+  - `bool IsFullLicense { set; }`
+    - License type.
+  - `bool NeedRebatesCheck { set; }`
+    - Has rebate check feature.
+  - `IEnumerable< Security > Securities { get; }`
+  - `IEnumerable< Portfolio > Portfolios { get; }`
+  - `IEnumerable< Position > Positions { get; }`
+  - `IEnumerable< Order > Orders { get; }`
+  - `IEnumerable< MyTrade > MyTrades { get; }`
+  - `bool HasPendingActions { get; }`
+  - `IConnectorLatencyManager LatencyManager { get; }`
+    - Latency manager.
+  - `ConnectionStates ConnectionState { get; }`
+    - Current connection state of the connector.
+  - `bool IsConnected { get; }`
+  - `bool IsSupportedServerOCO { get; }`
+    - Indicates whether the connector supports server-side OCO orders.
+  - `bool IsSupportedStopOrders { get; }`
+    - Indicates whether the connector supports stop orders.
+  - `bool IsSupportedTradingFunctions { get; }`
+    - Indicates whether the connector supports trading functions.
+  - `bool IsSupportedRussianMarket { get; }`
+    - Indicates whether the connector supports Russian market instruments.
+  - `bool IsSupportedAmericanFutures { get; }`
+    - Indicates whether the connector supports American futures.
+  - `bool IsSupportedAmericanStocks { get; }`
+    - Indicates whether the connector supports American stocks.
+  - `bool IsSupportedCrypto { get; }`
+    - Indicates whether the connector supports crypto instruments.
+  - `bool IsSupportedCfd { get; }`
+    - Indicates whether the connector supports CFD instruments.
+  - `bool IsSupportedMaxOrderCalculation { get; }`
+    - Does connector support max order calculation for the instrument This feature enables percentage slider under the volume input box Affects CalcMaxOrderVolume and CalcOrderCost methods.
+  - `bool IsSupportedServerTime { get; }`
+    - Does connector supports getting exchange server time.
+  - `Guid Id { get; }`
+  - `bool IsSupportedServerOCO { get; }`
+    - Indicates whether the connector supports server-side OCO orders.
+  - `bool IsSupportedStopOrders { get; }`
+    - Indicates whether the connector supports stop orders.
+  - `bool IsSupportedTradingFunctions { get; }`
+    - Indicates whether the connector supports trading functions.
+  - `bool IsConnected { get; }`
+  - `ConnectionStates ConnectionState { get; }`
+    - Current connection state of the connector.
+  - `MarketDataDelayPeriods MarketDataDelayPeriod { set; }`
+    - Gets or sets delay period for market data.
+  - `bool IsSupportedRussianMarket { get; }`
+    - Indicates whether the connector supports Russian market instruments.
+  - `bool IsSupportedAmericanFutures { get; }`
+    - Indicates whether the connector supports American futures.
+  - `bool IsSupportedAmericanStocks { get; }`
+    - Indicates whether the connector supports American stocks.
+  - `bool IsSupportedCrypto { get; }`
+    - Indicates whether the connector supports crypto instruments.
+  - `bool IsSupportedCfd { get; }`
+    - Indicates whether the connector supports CFD instruments.
+  - `bool IsSupportedMaxOrderCalculation { get; }`
+    - Does connector support max order calculation for the instrument This feature enables percentage slider under the volume input box Affects CalcMaxOrderVolume and CalcOrderCost methods.
+  - `bool IsSupportedServerTime { get; }`
+    - Does connector supports getting exchange server time.
+  - `bool MarketDataStreamEnabled { set; }`
+    - Indicates whether to raise market data through BestBidAskUpdates, MarketDepthsUpdate, and NewTrades events.
+  - `bool AllowUpdatePositionsPnL { set; }`
+  - `IEntityFactory Factory { set; }`
+    - Factory used to create Security, Portfolio, and other entity objects.
+  - `ITimeSyncManager? DefaultTimeSyncManager { set; }`
+    - Default ITimeSyncManager to get time difference with NTP server.
+  - `IConnectorExchangeInfoProvider ExchangeInfoProvider { set; }`
+    - Gets or sets the provider used to retrieve exchange information for the securities.
+  - `string DataPath { set; }`
+  - `IConnectorLatencyManager LatencyManager { get; }`
+    - Latency manager.
+  - `bool IsFullLicense { set; }`
+    - License type.
+  - `bool NeedRebatesCheck { set; }`
+    - Has rebate check feature.
+  - `IEnumerable< Security > Securities { get; }`
+  - `IEnumerable< Portfolio > Portfolios { get; }`
+  - `IEnumerable< MyTrade > MyTrades { get; }`
+  - `IEnumerable< Order > Orders { get; }`
+  - `IEnumerable< Position > Positions { get; }`
+  - `TimeOnly? RefreshSecuritiesTime { set; }`
+  - `bool HasPendingActions { get; }`
+  - `bool ServerMode { set; }`
+  - `bool ReconnectOnFirstConnect { set; }`
+
+## 事件
+
+  - `event ConnectorEventHandler< ConnectionStateEventArgs >? ConnectionStateChanged`
+  - `event ConnectorEventHandler? Connected`
+  - `event ConnectorEventHandler? Disconnected`
+  - `event ConnectorEventHandler< IEnumerable< MyTrade > >? NewMyTrades`
+  - `event ConnectorEventHandler< IEnumerable< Order > >? NewOrders`
+  - `event ConnectorEventHandler< IEnumerable< Position > >? NewPositions`
+  - `event ConnectorEventHandler< IEnumerable< Portfolio > >? NewPortfolios`
+  - `event ConnectorEventHandler< IEnumerable< Security > >? NewSecurities`
+  - `event ConnectorEventHandler< IEnumerable< Security > >? RemoveSecurities`
+  - `event ConnectorEventHandler< Order >? OrderChanged`
+  - `event ConnectorEventHandler< string, Order >? OrdersRegisterFailed`
+  - `event ConnectorEventHandler< string, Order >? OrdersCancelFailed`
+  - `event ConnectorEventHandler< Order, Order, string >? OrderModifyFailed`
+  - `event ConnectorEventHandler< IEnumerable< Portfolio > >? PortfoliosChanged`
+  - `event ConnectorEventHandler< IEnumerable< Position > >? PositionsChanged`
+  - `event ConnectorEventHandler< MarketDepth >? BestBidAskUpdates`
+  - `event ConnectorEventHandler< IEnumerable< MarketDepth > >? MarketDepthsUpdate`
+  - `event ConnectorEventHandler< MarketByOrder >? MarketByOrderChanged`
+  - `event ConnectorEventHandler< IEnumerable< Trade > >? NewTrades`
+  - `event ConnectorEventHandler< Security >? SecurityChanged`
+  - `event ConnectorEventHandler< SecuritySummary >? SecuritySummaryChanged`
+  - `event ConnectorEventHandler< Exception >? Error`
+  - `event ConnectorEventHandler< SecurityFilter, Exception?, IEnumerable< Security > >? SearchSecuritiesResult`
+  - `event ConnectorEventHandler< Security, Exception?>? RegisterSecurityResult`
+  - `event ConnectorEventHandler< News >? NewNews`
+  - `event ConnectorEventHandler< RebateResult >? RebateReceived`
+  - `event ConnectorEventHandler< IEnumerable< Security >, Exception?>? SubscribeMarketDataResult`
+  - `event ConnectorEventHandler< IEnumerable< Security >, Exception?>? UnsubscribeMarketDataResult`
+  - `event ConnectorEventHandler< ConnectionStateEventArgs >? ConnectionStateChanged`
+  - `event ConnectorEventHandler? Connected`
+  - `event ConnectorEventHandler? Disconnected`
+  - `event ConnectorEventHandler< IEnumerable< MyTrade > >? NewMyTrades`
+  - `event ConnectorEventHandler< IEnumerable< Order > >? NewOrders`
+  - `event ConnectorEventHandler< IEnumerable< Position > >? NewPositions`
+  - `event ConnectorEventHandler< IEnumerable< Portfolio > >? NewPortfolios`
+  - `event ConnectorEventHandler< IEnumerable< Security > >? NewSecurities`
+  - `event ConnectorEventHandler< IEnumerable< Security > >? RemoveSecurities`
+  - `event ConnectorEventHandler< Order >? OrderChanged`
+  - `event ConnectorEventHandler< string, Order >? OrdersRegisterFailed`
+  - `event ConnectorEventHandler< string, Order >? OrdersCancelFailed`
+  - `event ConnectorEventHandler< Order, Order, string >? OrderModifyFailed`
+  - `event ConnectorEventHandler< IEnumerable< Portfolio > >? PortfoliosChanged`
+  - `event ConnectorEventHandler< IEnumerable< Position > >? PositionsChanged`
+  - `event ConnectorEventHandler< MarketDepth >? BestBidAskUpdates`
+  - `event ConnectorEventHandler< IEnumerable< MarketDepth > >? MarketDepthsUpdate`
+  - `event ConnectorEventHandler< MarketByOrder > MarketByOrderChanged`
+  - `event ConnectorEventHandler< IEnumerable< Trade > >? NewTrades`
+  - `event ConnectorEventHandler< Security >? SecurityChanged`
+  - `event ConnectorEventHandler< SecuritySummary >? SecuritySummaryChanged`
+  - `event ConnectorEventHandler< Exception >? Error`
+    - Raised when an error occurs.
+  - `event ConnectorEventHandler< SecurityFilter, Exception?, IEnumerable< Security > >? SearchSecuritiesResult`
+  - `event ConnectorEventHandler< Security, Exception?>? RegisterSecurityResult`
+  - `event ConnectorEventHandler< News >? NewNews`
+  - `event ConnectorEventHandler< RebateResult >? RebateReceived`
+  - `event ConnectorEventHandler< IEnumerable< Security >, Exception?>? SubscribeMarketDataResult`
+  - `event ConnectorEventHandler< IEnumerable< Security >, Exception?>? UnsubscribeMarketDataResult`

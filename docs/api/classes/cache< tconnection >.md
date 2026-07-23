@@ -1,0 +1,227 @@
+# Cache< TConnection >
+
+**完整名称**: `ATAS.DataFeedsCore.Database.Cache< TConnection >`
+**类型**: 类
+**继承自**: `ATAS.DataFeedsCore.Database.ICache`
+
+## 公共方法
+
+  - ` Cache(string configurationName)`
+  - `void Init(bool isServer)`
+  - `ICollection< Portfolio > GetPortfolios()`
+  - `Portfolio GetPortfolio(string accountId)`
+  - `Portfolio TryGetPortfolio(string accountId)`
+  - `ICollection< Position > GetPositions(string accountId)`
+  - `ICollection< Position > GetPositions()`
+  - `ICollection< Order > GetOrders(string accountId)`
+  - `ICollection< MyTrade > GetMyTrades(string accountId)`
+  - `IEnumerable< MyTrade > GetPositionMyTrdades(Position position)`
+  - `IEnumerable< MyTrade > GetOpenedMyTrades()`
+  - `IEnumerable< Order > GetOrders(DateTime from, DateTime to, IEnumerable< string > accounts, IEnumerable< string > securities)`
+  - `IEnumerable< MyTrade > GetMyTrades(DateTime from, DateTime to, IEnumerable< string > accounts, IEnumerable< string > securities)`
+  - `IEnumerable< MyTrade > GetMyTrades(string accountId, long tradeId)`
+  - `IEnumerable< HistoryMyTrade > GetHistoryTrades(DateTime from, DateTime to, IEnumerable< string > accounts, IEnumerable< string > securities)`
+  - `Order TryGetOrder(string accountId, long extId, bool searchInDb)`
+  - `MyTrade TryGetMyTrade(string accountId, string tradeId, bool searchInDb)`
+  - `Position TryGetPosition(string accountId, string securityId)`
+  - `void DeletePortfolioData(Portfolio portfolio)`
+  - `IEnumerable< PortfolioChange > GetPortfolioChanges(string accountId, DateTime from, DateTime to)`
+  - `IEnumerable< PortfolioChange > GetPortfolioChanges(DateTime from, DateTime to, IEnumerable< string > accounts)`
+  - `void Save(PortfolioChange portfolioChange, bool wait=false)`
+  - `void Save(PortfolioState portfolioState, bool wait=false)`
+  - `ICollection< Security > LoadAllSecurities()`
+  - `ICollection< OvernightSwapValue > LoadAllSwapValues()`
+  - `ICollection< Security > GetSecurities()`
+  - `ICollection< Security > GetPositionSecurities()`
+  - `IEnumerable< Security > GetSecurities(string code, string exchange)`
+  - `IEnumerable< Security > GetSecuritiesByExchange(string exchange)`
+  - `Security GetSecurity(string id)`
+  - `void Save(IEnumerable< Security > securities, bool wait=false)`
+  - `void Save(Security security, bool wait=false)`
+  - `ICollection< SecurityMargin > GetSecurityMargins()`
+  - `SecurityMargin TryGetSecurityMargin(string securityId)`
+  - `void Save(SecurityMargin margin, bool wait=false)`
+  - `ICollection< Exchange > GetExchanges()`
+  - `ICollection< InstrumentExchange > GetInstrumentExchanges()`
+    - Get all InstrumentExchange need for import.
+  - `Exchange GetExchange(string code)`
+  - `Exchange TryGetExchange(string code)`
+  - `Exchange TryGetInstrumentExchange(string instrument, string code)`
+  - `InstrumentExchange TryGetInstrumentExchange(string instrument)`
+  - `void Save(Exchange exchange, bool wait=false)`
+  - `void Save(InstrumentExchange instrumentExchange, bool wait=false)`
+  - `void Remove(Exchange exchange)`
+  - `void Remove(InstrumentExchange instrumentExchange)`
+  - `ICollection< UserRole > GetUserRoles()`
+  - `UserRole GetUserRole(long id)`
+  - `UserRole TryGetUserRole(long id)`
+  - `void Save(UserRole role, bool wait=false)`
+  - `ICollection< UserGroup > GetUserGroups()`
+  - `ICollection< UserGroup > GetUserGroups(UserGroup parent)`
+  - `UserGroup GetUserGroup(long id)`
+  - `UserGroup TryGetUserGroup(long id)`
+  - `void Save(UserGroup group, bool wait=false)`
+  - `void DeleteUserGroupData(UserGroup userGroup, UserRole? role)`
+  - `ICollection< User > GetUsers(UserGroup group)`
+  - `User? GetUser(string login)`
+  - `User GetUser(long id)`
+  - `int GetNumberOfActiveUsers()`
+  - `void Save(User user, bool wait=false)`
+  - `ICollection< CommissionGroup > GetCommissionGroups(UserGroup group)`
+  - `CommissionGroup TryGetCommissionGroup(long id)`
+  - `CommissionGroup TryGetCommissionGroup(Portfolio portfolio)`
+  - `void Save(CommissionGroup commissionGroup, bool wait=false)`
+  - `string GetValue(string name)`
+  - `void SetValue(string name, string value, bool wait=false)`
+  - `void Save(Order order, bool wait=false)`
+  - `void Save(MyTrade trade, bool wait=false)`
+  - `void Save(HistoryMyTrade trade, bool wait=false)`
+  - `void Save(Portfolio portfolio, bool extended, bool wait=false)`
+  - `void Save(Position position, bool wait=false)`
+  - `void Remove(MyTrade trade)`
+  - `void ClearHistoryTrades()`
+  - `void ClearMyTrades()`
+  - `void ClearOrders()`
+  - `IEnumerable< News > GetNews(string[] accounts, DateTime from, DateTime to)`
+  - `IEnumerable< News > GetNews(DateTime from, DateTime to)`
+  - `IEnumerable< News > GetNews(User user, bool unhandled)`
+  - `void Save(News news, bool wait=false)`
+  - `ICollection< PortfolioViewer > GetPortfolioViewers()`
+  - `PortfolioViewer TryGetPortfolioViewer(long id)`
+  - `void Save(PortfolioViewer viewer, bool wait=false)`
+  - `IEnumerable< ServerPnL > GetServerPnL(DateTime from, DateTime to)`
+  - `void Wait()`
+  - `void WaitInitialized()`
+  - `override string ToString()`
+    - Returns a string that represents the current object.
+  - `Security GetOrCreateSecurity(string id, Func< string, Security > create)`
+  - `Portfolio GetOrCreatePortfolio(string accountId, Func< string, Portfolio > create)`
+  - `Position GetOrCreatePosition(Portfolio portfolio, Security security, Func< Portfolio, Security, Position > create)`
+  - `Order GetOrCreateOrder(long extId, Func< long, Order > create)`
+  - `MyTrade GetOrCreateMyTrade(string tradeId, Func< string, MyTrade > create)`
+  - `Trade CreateTrade()`
+  - `MarketDepth CreateMarketDepth()`
+  - ` Cache(string configurationName)`
+  - ` Cache(string providerName, string connectionString)`
+  - ` Cache(DataProviderBase provider, string connectionString)`
+  - `void Init(bool isServer)`
+  - `ICollection< Portfolio > GetPortfolios()`
+  - `Portfolio GetPortfolio(string accountId)`
+  - `Portfolio TryGetPortfolio(string accountId)`
+  - `ICollection< Position > GetPositions(string accountId)`
+  - `ICollection< Position > GetPositions()`
+  - `ICollection< Order > GetOrders(string accountId)`
+  - `ICollection< MyTrade > GetMyTrades(string accountId)`
+  - `IEnumerable< MyTrade > GetPositionMyTrdades(Position position)`
+  - `IEnumerable< MyTrade > GetOpenedMyTrades()`
+  - `IEnumerable< Order > GetOrders(DateTime from, DateTime to, IEnumerable< string > accounts, IEnumerable< string > securities)`
+  - `IEnumerable< MyTrade > GetMyTrades(DateTime from, DateTime to, IEnumerable< string > accounts, IEnumerable< string > securities)`
+  - `IEnumerable< MyTrade > GetMyTrades(string accountId, long tradeId)`
+  - `IEnumerable< HistoryMyTrade > GetHistoryTrades(DateTime from, DateTime to, IEnumerable< string > accounts, IEnumerable< string > securities)`
+  - `Order TryGetOrder(string accountId, long extId, bool searchInDb)`
+  - `MyTrade TryGetMyTrade(string accountId, string tradeId, bool searchInDb)`
+  - `Position TryGetPosition(string accountId, string securityId)`
+  - `IEnumerable< PortfolioChange > GetPortfolioChanges(string accountId, DateTime from, DateTime to)`
+  - `void Save(PortfolioChange portfolioChange, bool wait=false)`
+  - `void Save(PortfolioState portfolioState, bool wait=false)`
+  - `ICollection< Security > LoadAllSecurities()`
+  - `ICollection< Security > GetSecurities()`
+  - `ICollection< Security > GetPositionSecurities()`
+  - `IEnumerable< Security > GetSecurities(string code, string exchange)`
+  - `IEnumerable< Security > GetSecuritiesByExchange(string exchange)`
+  - `Security GetSecurity(string id)`
+  - `void Save(IEnumerable< Security > securities, bool wait=false)`
+  - `void Save(Security security, bool wait=false)`
+  - `ICollection< SecurityMargin > GetSecurityMargins()`
+  - `SecurityMargin TryGetSecurityMargin(string securityId)`
+  - `void Save(SecurityMargin margin, bool wait=false)`
+  - `ICollection< Exchange > GetExchanges()`
+  - `ICollection< InstrumentExchange > GetInstrumentExchanges()`
+    - Get all InstrumentExchange need for import.
+  - `Exchange GetExchange(string code)`
+  - `Exchange TryGetExchange(string code)`
+  - `Exchange TryGetInstrumentExchange(string instrument, string code)`
+  - `InstrumentExchange TryGetInstrumentExchange(string instrument)`
+  - `void Save(Exchange exchange, bool wait=false)`
+  - `void Save(InstrumentExchange instrumentExchange, bool wait=false)`
+  - `void Remove(Exchange exchange)`
+  - `void Remove(InstrumentExchange instrumentExchange)`
+  - `ICollection< UserRole > GetUserRoles()`
+  - `UserRole GetUserRole(long id)`
+  - `UserRole TryGetUserRole(long id)`
+  - `void Save(UserRole role, bool wait=false)`
+  - `ICollection< UserGroup > GetUserGroups()`
+  - `ICollection< UserGroup > GetUserGroups(UserGroup parent)`
+  - `UserGroup GetUserGroup(long id)`
+  - `UserGroup TryGetUserGroup(long id)`
+  - `void Save(UserGroup group, bool wait=false)`
+  - `ICollection< User > GetUsers(UserGroup group)`
+  - `User? GetUser(string login)`
+  - `User? GetUser(long id)`
+  - `void Save(User user, bool wait=false)`
+  - `ICollection< CommissionGroup > GetCommissionGroups(UserGroup group)`
+  - `CommissionGroup TryGetCommissionGroup(long id)`
+  - `CommissionGroup TryGetCommissionGroup(Portfolio portfolio)`
+  - `void Save(CommissionGroup commissionGroup, bool wait=false)`
+  - `string GetValue(string name)`
+  - `void SetValue(string name, string value, bool wait=false)`
+  - `void Save(Order order, bool wait=false)`
+  - `void Save(MyTrade trade, bool wait=false)`
+  - `void Save(HistoryMyTrade trade, bool wait=false)`
+  - `void Save(Portfolio portfolio, bool extended, bool wait=false)`
+  - `void Save(Position position, bool wait=false)`
+  - `void Remove(MyTrade trade)`
+  - `void ClearHistoryTrades()`
+  - `void ClearMyTrades()`
+  - `void ClearOrders()`
+  - `IEnumerable< News > GetNews(DateTime from, DateTime to)`
+  - `IEnumerable< News > GetNews(User user, bool unhandled)`
+  - `void Save(News news, bool wait=false)`
+  - `ICollection< PortfolioViewer > GetPortfolioViewers()`
+  - `PortfolioViewer TryGetPortfolioViewer(long id)`
+  - `void Save(PortfolioViewer viewer, bool wait=false)`
+  - `IEnumerable< ServerPnL > GetServerPnL(DateTime from, DateTime to)`
+  - `void Wait()`
+  - `void WaitInitialized()`
+  - `Security GetOrCreateSecurity(string id, Func< string, Security > create)`
+  - `Portfolio GetOrCreatePortfolio(string accountId, Func< string, Portfolio > create)`
+  - `Position GetOrCreatePosition(Portfolio portfolio, Security security, Func< Portfolio, Security, Position > create)`
+  - `Order GetOrCreateOrder(long extId, Func< long, Order > create)`
+  - `MyTrade GetOrCreateMyTrade(string id, Func< string, MyTrade > create)`
+  - `Trade CreateTrade()`
+  - `MarketDepth CreateMarketDepth()`
+
+## 保护方法
+
+  - ` Cache(string providerName, string connectionString)`
+  - ` Cache(DataProviderBase provider, string connectionString)`
+  - `virtual void OnInit(TConnection db)`
+  - `override void RaiseLoggingSettingsChanged(string propertyName="")`
+  - `User GetUser(TConnection db, long id)`
+  - `abstract TConnection CreateDatabaseManager()`
+  - `T ProcessDb< T >(Func< TConnection, T > action)`
+  - `void Insert< T >(TConnection db, T entity)`
+  - `void InsertOrUpdate< T >(TConnection db, T entity)`
+  - `void InsertWithIdentityOrUpdate< T >(TConnection db, T entity, Func< T, long > getId, Action< T, long > setId)`
+  - `void AddToQueue(Action< TConnection > value, bool wait)`
+  - `void AddToQueue(long id, Action< TConnection > value)`
+  - `override DatabaseManager CreateDatabaseManager()`
+
+## 属性
+
+  - `DataProviderBase Provider { get; }`
+  - `string ConfigurationName { get; }`
+  - `string ProviderName { get; }`
+  - `string ConnectionString { get; }`
+  - `long LastExtId { get; }`
+  - `long LastOrderId { get; }`
+  - `long LastTradeId { get; }`
+  - `bool IsInitialized { get; }`
+  - `TimeSpan ClearCachePeriod { set; }`
+  - `bool CheckConsistency { set; }`
+  - `long LastExtId { get; }`
+  - `long LastOrderId { get; }`
+  - `long LastTradeId { get; }`
+  - `bool IsInitialized { get; }`
+  - `TimeSpan ClearCachePeriod { set; }`
+  - `bool CheckConsistency { set; }`
