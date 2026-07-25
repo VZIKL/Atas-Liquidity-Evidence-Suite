@@ -8,11 +8,11 @@ Indicator 基类、Heatmap、数据提供者等指标开发相关类
 | [`CustomValue`](customvalue.md) | 0 | 3 | 0 | Represents a custom value with associated properties. |
 | [`ExtendedIndicator`](extendedindicator.md) | 83 | 42 | 0 | An extended base class for custom indicators that provide ad |
 | [`FixedProfileRequest`](fixedprofilerequest.md) | 2 | 2 | 0 | Represents a request for a fixed profile with a specific per |
-| [`HeatmapIndicator< TSettings >`](heatmapindicator< tsettings >.md) | 17 | 9 | 0 | Author-facing entry points for the heatmap indicator API. Th |
+| [`HeatmapIndicator< TSettings >`](heatmapindicator-tsettings.md) | 17 | 9 | 0 | Author-facing entry points for the heatmap indicator API. Th |
 | [`HeatmapIndicatorAttribute`](heatmapindicatorattribute.md) | 1 | 6 | 0 | Marks a class as a heatmap indicator type and supplies disco |
 | [`HeatmapIndicatorDescriptorBuilder`](heatmapindicatordescriptorbuilder.md) | 8 | 0 | 0 | Fluent builder that produces an immutable HeatmapIndicatorDe |
 | [`HeatmapIndicatorFallbackReWarmGuard`](heatmapindicatorfallbackrewarmguard.md) | 3 | 0 | 0 | State holder for indicators whose calculation is anchored at |
-| [`HeatmapIndicatorSeriesHandle< TValue >`](heatmapindicatorserieshandle< tvalue >.md) | 0 | 0 | 0 | Strongly typed handle for a series within a visual. Returned |
+| [`HeatmapIndicatorSeriesHandle< TValue >`](heatmapindicatorserieshandle-tvalue.md) | 0 | 0 | 0 | Strongly typed handle for a series within a visual. Returned |
 | [`HeatmapIndicatorVisualHandle`](heatmapindicatorvisualhandle.md) | 2 | 0 | 0 | Strongly typed handle for a visual added to a descriptor via |
 | [`HeatmapLeaseMisuseException`](heatmapleasemisuseexception.md) | 0 | 1 | 0 | Thrown when an indicator misuses the visual-state lease API. |
 | [`Indicator`](indicator.md) | 95 | 64 | 0 | Base class for custom indicators. |

@@ -4,8 +4,8 @@ Strategy 基类、ATM 策略、Chart 策略
 
 | 类名 | 方法 | 属性 | 事件 | 描述 |
 |------|------|------|------|------|
-| [`ATMStrategy< TStrategy >`](atmstrategy< tstrategy >.md) | 93 | 32 | 7 |  |
-| [`BaseStopProfitStrategy< TStrategy, TSettings >`](basestopprofitstrategy< tstrategy, tsettings >.md) | 140 | 47 | 0 |  |
+| [`ATMStrategy< TStrategy >`](atmstrategy-tstrategy.md) | 93 | 32 | 7 |  |
+| [`BaseStopProfitStrategy< TStrategy, TSettings >`](basestopprofitstrategy-tstrategy-tsettings.md) | 140 | 47 | 0 |  |
 | [`ChartStrategy`](chartstrategy.md) | 132 | 88 | 12 | Represents an abstract class for a chart strategy that exten |
 | [`ProtectionSettingsEditor`](protectionsettingseditor.md) | 1 | 0 | 0 |  |
 | [`SmaChartStrategy`](smachartstrategy.md) | 135 | 104 | 0 |  |
